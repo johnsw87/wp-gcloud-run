@@ -13,3 +13,4 @@ Environment variables and port could be set via Cloud Run interface, or pass it 
 - wp-config.php uses environment variables for database parameters instead of hard-coded values
 - contains [WP-Stateless plugin](https://wordpress.org/plugins/wp-stateless/), which allow us to use Google Cloud Storage instead of local storage
 
+add secrets manager steps
