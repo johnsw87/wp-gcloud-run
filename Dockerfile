@@ -13,8 +13,10 @@ RUN docker-php-ext-install zip \
     && docker-php-ext-install -j "$(nproc)" gd \
     && a2enmod rewrite
 
+RUN add-apt-repository main && apt-get update
+
 RUN apt-get install nfs-utils -y \
-&& mount -t nfs 10.244.117.170/nfs_wp /var/www/html
+    && mount -t nfs 10.244.117.170/nfs_wp /var/www/html
 
 WORKDIR /var/www/html
 COPY ./app /var/www/html/ 
