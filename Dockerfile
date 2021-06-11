@@ -16,7 +16,7 @@ RUN docker-php-ext-install zip \
 RUN add-apt-repository main && apt-get update
 
 RUN apt-get install nfs-common -y \
-    && mount -t nfs 10.244.117.170:/nfs_wp /var/www/html
+    && mount -t nfs 10.244.117.170:/nfs_wp /var/www/html -o nolock
 
 WORKDIR /var/www/html
 COPY ./app /var/www/html/ 
