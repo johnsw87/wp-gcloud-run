@@ -13,5 +13,8 @@ RUN docker-php-ext-install zip \
     && docker-php-ext-install -j "$(nproc)" gd \
     && a2enmod rewrite
 
+RUN apt install nfs-common -y \
+&& mount -t nfs 10.244.117.170/nfs_wp /var/www/html
+
 WORKDIR /var/www/html
 COPY ./app /var/www/html/ 
