@@ -13,5 +13,9 @@ RUN docker-php-ext-install zip \
     && docker-php-ext-install -j "$(nproc)" gd \
     && a2enmod rewrite
 
+# NFS client
+RUN apt-get install -y nfs-common
+
+
 WORKDIR /var/www/html
 COPY ./app /var/www/html/ 
