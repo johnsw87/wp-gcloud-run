@@ -1,5 +1,10 @@
 FROM php:8.0-apache
 
+# NFS client
+RUN apt-get install -y nfs-common
+RUN mkdir -p /var/www/html
+COPY run.sh /run.sh
+RUN bash run.sh
 RUN apt-get update && apt-get upgrade -yy \
     && apt-get install --no-install-recommends apt-utils libjpeg-dev libpng-dev libwebp-dev \
     libzip-dev zlib1g-dev libfreetype6-dev supervisor zip \
@@ -12,9 +17,6 @@ RUN docker-php-ext-install zip \
     && docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
     && docker-php-ext-install -j "$(nproc)" gd \
     && a2enmod rewrite
-
-# NFS client
-RUN apt-get install -y nfs-common
 
 
 WORKDIR /var/www/html
