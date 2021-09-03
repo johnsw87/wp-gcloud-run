@@ -4,6 +4,6 @@
 
 # Cloud Filestore
 echo "mounting Cloud Filestore"
-mount -o nolock <IP_ADDRESS>:/<DIRECTORY> /var/www/html
+mount -o nolock 10.127.32.2:/wp_content /var/www/html
 
 echo "mounts completed"
